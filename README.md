@@ -16,6 +16,8 @@ No selectors, no proxies, no data cleaning. Just the data.
 - 👗 **Full product details** — every colour and size with its own SKU and stock, retail vs sale price, gallery, video, attributes, size guide with measurements, store & brand
 - 🗂️ **Category browsing 3,000+ deep** — page through any Shein category the reliable way, same product card as search
 - 📈 **Search intelligence** — how Shein interprets a query, trending keywords right now, supported currencies with USD rates & languages
+- 🌍 **Every Shein storefront, 91 countries** — pick the market with `country` (`gb`, `de`, `fr`, `mx`, `br`, `jp`, `au`, `sa`...) and get that site's language, currency and catalogue, with `language` and `currency` overrides on every endpoint
+- 🛒 **Shared carts** — paste a "Share cart" link from the Shein app and get every item in it with the colour/size the shopper picked, price, stock and store
 
 ## Why Shein Scraper
 
@@ -85,17 +87,34 @@ Once you're happy with the data, start with the free plan for 200 free calls eve
 
 ## Endpoints
 
-7 endpoints cover everything you need.
+8 endpoints cover everything you need. Every one takes `country`, `language` and `currency` — see [Countries & currencies](#countries--currencies).
 
 | Endpoint | Path | Returns |
 |---|---|---|
 | Search Products | `/search/products` | 120 products per page with price, discount, rating, stock & variants |
 | Product Details | `/products/details` | Everything about one product: every colour, size, stock, price & photo |
+| Cart Products | `/cart/products` | Every item in a cart shared from the Shein app, with the chosen colour/size, price, stock & store |
 | Category Products | `/categories/products` | Any category, 120 per page, same filters and sort as search |
 | Search Autocomplete | `/search/autocomplete` | How Shein reads a query: matched categories and product count |
 | Trending Keywords | `/products/trending` | The search terms Shein is pushing right now |
 | Currencies | `/helpers/currencies` | Every supported currency with symbol and USD exchange rate |
 | Languages | `/helpers/languages` | Every supported storefront language |
+
+## Countries & currencies
+
+Shein runs a separate site per market, each with its own language, currency and catalogue. Pick one with `country` (2-letter code, default `us`); `language` and `currency` override that market's defaults, and every response carries a `locale` block telling you the host, language and currency the data is in.
+
+| Region | Countries | Default | Example |
+|---|---|---|---|
+| North America | `us` (default), `ca`, `mx`, `pr` | local language & currency | `/search/products?query=dress&country=ca` |
+| Europe | `gb`, `de`, `fr`, `es`, `it`, `nl`, `pl`, `pt`, `se`, `ch`, `at`, `ie`... | local language, EUR/GBP/CHF/SEK/PLN | `/products/details?product=407274454&country=fr` |
+| Middle East & Africa | `sa`, `ae`, `kw`, `qa`, `om`, `bh`, `lb`, `jo`, `il`, `tr`, `ma`, `za` | local language & currency | `/products/trending?country=ae` |
+| Latin America | `br`, `cl`, `co`, `pe`, `ar`, `ec` | Spanish/Portuguese, local currency | `/search/products?query=vestido&country=cl&currency=USD` |
+| Asia-Pacific | `au`, `nz`, `jp`, `kr`, `sg`, `my`, `th`, `vn`, `ph`, `id` | local language & currency | `/categories/products?category=1727&country=au` |
+
+Every market is served through a residential exit inside that market. Product details, shared carts and the helper lists work for every country. Search and category listings depend on the market: Shein currently puts them behind a captcha on its EU and UK sites (for example `fr`, `de`, `gb`) and may do the same on other markets, and those calls return a clear error rather than hang. The first call to a new country takes about a minute longer while its browser session is prepared.
+
+All 91 codes: ad, ae, al, am, ar, at, au, az, ba, be, bg, bh, bn, br, bt, ca, ch, cl, co, cy, cz, de, dk, ec, ee, es, fi, fr, gb, ge, gr, hr, hu, id, ie, il, is, it, jo, jp, kg, kh, kr, kw, kz, la, lb, li, lk, lt, lu, lv, ma, md, me, mk, mm, mn, mo, mt, mv, mx, my, nl, no, nz, om, pe, ph, pl, pr, pt, qa, ro, rs, sa, se, sg, si, sk, sm, th, tj, tr, ua, us, uz, va, vn, xk, za. `/helpers/currencies?country=<code>` lists the currencies a market accepts and `/helpers/languages?country=<code>` its languages.
 
 ## Pricing
 
