@@ -102,30 +102,28 @@ Once you're happy with the data, start with the free plan for 200 free calls eve
 
 ## Countries & currencies
 
-Shein runs a separate site per market, each with its own language, currency and catalogue. Pick one with `country` (2-letter code, default `us`); `language` and `currency` override that market's defaults, and every response carries a `locale` block telling you the host, language and currency the data is in.
+Pick the store with `country` (default `us`). Prices, currency and language follow that store; `language` and `currency` override them.
 
-| Region | Countries | Default | Example |
-|---|---|---|---|
-| North America | `us` (default), `ca`, `mx`, `pr` | local language & currency | `/search/products?query=dress&country=ca` |
-| Europe | `gb`, `de`, `fr`, `es`, `it`, `nl`, `pl`, `pt`, `se`, `ch`, `at`, `ie`... | local language, EUR/GBP/CHF/SEK/PLN | `/products/details?product=407274454&country=fr` |
-| Middle East & Africa | `sa`, `ae`, `kw`, `qa`, `om`, `bh`, `lb`, `jo`, `il`, `tr`, `ma`, `za` | local language & currency | `/products/trending?country=ae` |
-| Latin America | `br`, `cl`, `co`, `pe`, `ar`, `ec` | Spanish/Portuguese, local currency | `/search/products?query=vestido&country=cl&currency=USD` |
-| Asia-Pacific | `au`, `nz`, `jp`, `kr`, `sg`, `my`, `th`, `vn`, `ph`, `id` | local language & currency | `/categories/products?category=1727&country=au` |
+| Region | Countries | Example |
+|---|---|---|
+| North America | `us` (default), `ca`, `mx`, `pr` | `/search/products?query=dress&country=ca` |
+| Europe | `gb`, `de`, `fr`, `es`, `it`, `nl`, `pl`, `pt`, `se`, `ch`, `at`, `ie`... | `/products/details?product=407274454&country=fr` |
+| Middle East & Africa | `sa`, `ae`, `kw`, `qa`, `om`, `bh`, `lb`, `jo`, `il`, `tr`, `ma`, `za` | `/products/trending?country=ae` |
+| Latin America | `br`, `cl`, `co`, `pe`, `ar`, `ec` | `/search/products?query=vestido&country=cl&currency=USD` |
+| Asia-Pacific | `au`, `nz`, `jp`, `kr`, `sg`, `my`, `th`, `vn`, `ph`, `id` | `/categories/products?category=1727&country=au` |
 
-Every market is served through a residential exit inside that market. Product details, shared carts and the helper lists work for every country. Search and category listings depend on the market: Shein currently puts them behind a captcha on its EU and UK sites (for example `fr`, `de`, `gb`) and may do the same on other markets, and those calls return a clear error rather than hang. The first call to a new country takes about a minute longer while its browser session is prepared.
-
-All 91 codes: ad, ae, al, am, ar, at, au, az, ba, be, bg, bh, bn, br, bt, ca, ch, cl, co, cy, cz, de, dk, ec, ee, es, fi, fr, gb, ge, gr, hr, hu, id, ie, il, is, it, jo, jp, kg, kh, kr, kw, kz, la, lb, li, lk, lt, lu, lv, ma, md, me, mk, mm, mn, mo, mt, mv, mx, my, nl, no, nz, om, pe, ph, pl, pr, pt, qa, ro, rs, sa, se, sg, si, sk, sm, th, tj, tr, ua, us, uz, va, vn, xk, za. `/helpers/currencies?country=<code>` lists the currencies a market accepts and `/helpers/languages?country=<code>` its languages.
+All 91 codes: ad, ae, al, am, ar, at, au, az, ba, be, bg, bh, bn, br, bt, ca, ch, cl, co, cy, cz, de, dk, ec, ee, es, fi, fr, gb, ge, gr, hr, hu, id, ie, il, is, it, jo, jp, kg, kh, kr, kw, kz, la, lb, li, lk, lt, lu, lv, ma, md, me, mk, mm, mn, mo, mt, mv, mx, my, nl, no, nz, om, pe, ph, pl, pr, pt, qa, ro, rs, sa, se, sg, si, sk, sm, th, tj, tr, ua, us, uz, va, vn, xk, za.
 
 ## Pricing
 
 High value, Low price.
 
-| Plan | Price | Calls / month | Per 1,000 |
+| Plan | Price | Per 1,000 |
 |---|---|---|---|
-| **Basic** | **Free** | **200** — the most generous free plan | $0 |
-| **Pro** | $16/mo | 5,000 | $3.20 |
-| **Ultra** | $48/mo | 25,000 | $1.92 |
-| **Mega** | $148/mo | 150,000 | $0.99 |
+| **Basic** | **Free** | $0 |
+| **Pro** | $16/mo | $3.20 |
+| **Ultra** | $48/mo | $1.92 |
+| **Mega** | $148/mo | $0.99 |
 
 Need a bigger plan? Ask on [WhatsApp](https://api.whatsapp.com/send?phone=918178804274&text=I%20need%20a%20custom%20plan%20for%20the%20Shein%20Scraper%20API.) or [Email](mailto:happy.to.help@omkar.cloud?subject=Custom%20plan%20for%20Shein%20Scraper%20API&body=I%20need%20a%20custom%20plan%20for%20the%20Shein%20Scraper%20API.).
 
