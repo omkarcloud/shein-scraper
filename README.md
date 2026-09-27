@@ -13,7 +13,7 @@ No selectors, no proxies, no data cleaning. Just the data.
 ## What can I get
 
 - 🔎 **Live search across 15,000+ products per query** — 120 per page with price, discount, rating, reviews, stock, images & colour variants; filter by price, sort 5 ways
-- 👗 **Full product details** — every colour and size with its own SKU and stock, retail vs sale price, gallery, video, attributes, size guide with measurements, store & brand
+- 👗 **Full product details** — every option (colour, size, RAM, storage...) and every buyable variant with its own SKU, price and stock, retail vs sale price, gallery, video, attributes, size guide, store & brand
 - 🗂️ **Category browsing 3,000+ deep** — page through any Shein category the reliable way, same product card as search
 - 📈 **Search intelligence** — how Shein interprets a query, trending keywords right now, supported currencies with USD rates & languages
 - 🌍 **Every Shein storefront, 91 countries** — pick the market with `country` (`gb`, `de`, `fr`, `mx`, `br`, `jp`, `au`, `sa`...) and get that site's language, currency and catalogue, with `language` and `currency` overrides on every endpoint
@@ -92,7 +92,7 @@ Once you're happy with the data, start with the free plan for 200 free calls eve
 | Endpoint | Path | Returns |
 |---|---|---|
 | Search Products | `/search/products` | 120 products per page with price, discount, rating, stock & variants |
-| Product Details | `/products/details` | Everything about one product: every colour, size, stock, price & photo |
+| Product Details | `/products/details` | Everything about one product: every option and variant with price, stock & photo (paste an id, a URL or an app share link) |
 | Cart Products | `/cart/products` | Every item in a cart shared from the Shein app, with the chosen colour/size, price, stock & store |
 | Category Products | `/categories/products` | Any category, 120 per page, same filters and sort as search |
 | Search Autocomplete | `/search/autocomplete` | How Shein reads a query: matched categories and product count |
